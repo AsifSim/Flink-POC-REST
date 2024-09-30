@@ -1,6 +1,7 @@
 To start the code
 =========================
 1: Build the docker(docker-compose build)
+
 2: docker-compose up
 
 
