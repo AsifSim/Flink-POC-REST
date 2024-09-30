@@ -1,0 +1,56 @@
+#version: "2.1"
+
+services:
+
+  ###############################################################
+  #    Functions service
+  ###############################################################
+
+  flink-rest-integration:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    expose:
+      - "1108"
+
+  ###############################################################
+  #    StateFun runtime
+  ###############################################################
+
+  statefun:
+#    image: apache/flink-statefun
+    image: apache/flink-statefun-playground:latest
+    ports:
+      - "8081:8081"
+      - "8090:8090"
+      - "8091:8091"
+      - "8086:8086"
+    depends_on:
+      - flink-rest-integration
+    volumes:
+      - ./module.yaml:/module.yaml
+
+#  master:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile  # Specify your Dockerfile if it's named differently
+#    expose:
+#      - "6123"
+#    ports:
+#      - "8082:8081"
+#    environment:
+#      - ROLE=master
+#      - MASTER_HOST=master
+#
+#  worker:
+#      build:
+#        context: .
+#        dockerfile: Dockerfile  # Use the same Dockerfile for the worker
+#      expose:
+#        - "6121"
+#        - "6122"
+#      depends_on:
+#        - master
+#      environment:
+#        - ROLE=worker
+#        - MASTER_HOST=master
