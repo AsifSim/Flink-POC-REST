@@ -18,4 +18,6 @@ with JSON payload
 OR 
 
 
-curl -X PUT http://127.0.0.1:8090/org.example/greetings/8?content-type=application/vnd.greeter.types/Greet -d '{"who":"AzmiAsif","Greeting":"Good Night"}'
+curl -X PUT http://127.0.0.1:8090/org.example/greetings/8 \
+  -H "Content-Type: application/vnd.greeter.types/Greet" \
+  -d '{"who":"AzmiAsif","Greeting":"Good Night"}'
