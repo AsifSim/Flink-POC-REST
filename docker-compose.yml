@@ -19,7 +19,8 @@ services:
 
   statefun:
 #    image: apache/flink-statefun
-    image: apache/flink-statefun-playground:latest
+#    image: apache/flink-statefun-playground:latest
+    image: my-flink-image
     ports:
       - "8081:8081"
       - "8090:8090"
@@ -29,6 +30,8 @@ services:
       - flink-rest-integration
     volumes:
       - ./module.yaml:/module.yaml
+#      - ./module.yaml:/app/module.yaml
+
 
 #  master:
 #    build:
